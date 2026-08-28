@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "metrics": {
+    "production_loc": 2348,
+    "production_files": 32,
+    "production_packages": 7,
+    "test_files": 10,
+    "production_functions": 134,
+    "decision_points": 353
+  },
+  "persistence": {
+    "module": "go.etcd.io/bbolt",
+    "entities": [
+      "Record",
+      "User",
+      "Event",
+      "Audit"
+    ],
+    "reopen_test": "TestPersistenceSurvivesReopen"
+  },
+  "workflows": [
+    {
+      "steps": [
+        "receive course10 assignment",
+        "normalize and validate submission",
+        "persist Record and Event entities",
+        "return the processing status"
+      ],
+      "test": "TestRecordFlow10"
+    },
+    {
+      "steps": [
+        "register a course actor",
+        "review the submitted assignment",
+        "archive the approved record",
+        "query the course submission page"
+      ],
+      "test": "TestWorkflowOne"
+    },
+    {
+      "steps": [
+        "submit assignment materials",
+        "process status events",
+        "notify the student",
+        "track the persisted lifecycle"
+      ],
+      "test": "TestWorkflowThree"
+    }
+  ]
+}
